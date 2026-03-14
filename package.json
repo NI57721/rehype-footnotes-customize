@@ -54,5 +54,13 @@
     "typescript": "^5.9.3",
     "unified": "^11.0.5",
     "vfile": "^6.0.3"
+  },
+  "peerDependencies": {
+    "remark-rehype": "^10.0.1"
+  },
+  "peerDependenciesMeta": {
+    "remark-rehype": {
+      "optional": true
+    }
   }
 }
