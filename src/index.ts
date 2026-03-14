@@ -22,7 +22,7 @@ const rehypeFootnotesCustomize: Plugin<
     }
 
     const relativePath =
-      "/" + relative(process.cwd(), filePath).replaceAll("\\", "/");
+      "/" + relative(process.cwd(), filePath).replace(/\\/g, "/");
     for (const options of optionsArray) {
       const { path, footnoteLabel, footnoteBackContent } = options;
 
@@ -38,7 +38,7 @@ const rehypeFootnotesCustomize: Plugin<
 
       visit(tree, "element", (node: Element) => {
         if (footnoteLabel) {
-          const id = node.properties?.id;
+          const id = node.properties["id"];
           if (id === "footnote-label") {
             node.children = [{ type: "text", value: footnoteLabel } as Text];
           }
@@ -46,7 +46,7 @@ const rehypeFootnotesCustomize: Plugin<
         if (footnoteBackContent) {
           if (
             node.tagName === "a" &&
-            node.properties?.dataFootnoteBackref !== undefined
+            node.properties["dataFootnoteBackref"] !== undefined
           ) {
             node.children = [
               { type: "text", value: footnoteBackContent } as Text,
