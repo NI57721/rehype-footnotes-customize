@@ -21,8 +21,7 @@ const rehypeFootnotesCustomize: Plugin<
       return;
     }
 
-    const relativePath =
-      "/" + relative(process.cwd(), filePath).replace(/\\/g, "/");
+    const relativePath = relative(process.cwd(), filePath).replace(/\\/g, "/");
     for (const options of optionsArray) {
       const { path, footnoteLabel, footnoteBackContent } = options;
 

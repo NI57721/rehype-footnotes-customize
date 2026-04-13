@@ -47,12 +47,12 @@ export default {
       rehypeFootnotesCustomize,
       [
         {
-          path: /^\/src\/blog\/ja\//,
+          path: /^src\/blog\/ja\//,
           footnoteLabel: '脚註',
           footnoteBackContent: '戻る',
         },
         {
-          path: /^\/src\/blog\/de\//,
+          path: /^src\/blog\/de\//,
           footnoteLabel: 'Fußnoten',
           footnoteBackContent: 'Zurück',
         },
@@ -86,8 +86,8 @@ string.
 Examples:
 
 ```js
-path: /^\/blog\/de\//,
-path: '/content/german/',
+path: /^blog\/de\//,
+path: 'content/german/',
 ```
 
 ### `footnoteLabel`
