@@ -34,9 +34,9 @@
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
     "format": "prettier --write src",
-    "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "typecheck": "tsc --noEmit src/*"
+    "lint": "pnpm run /^lint:/",
+    "lint:eslint": "eslint .",
+    "lint:typecheck": "tsc --noEmit",
   },
   "dependencies": {
     "unist-util-visit": "^5.1.0"

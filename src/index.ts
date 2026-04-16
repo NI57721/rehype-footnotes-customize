@@ -11,11 +11,10 @@ export interface RehypeFootnotesCustomizeOptions {
 }
 
 const rehypeFootnotesCustomize: Plugin<
-  [RehypeFootnotesCustomizeOptions[]?],
+  [Array<RehypeFootnotesCustomizeOptions>?],
   Root
-> = (optionsArray = []) => {
+> = (optionsArray: Array<RehypeFootnotesCustomizeOptions> = []) => {
   return (tree: Root, file: VFile) => {
-    // const filePath = String((file as any)?.path ?? "");
     const filePath = file.path ?? "";
     if (!filePath) {
       return;
@@ -25,12 +24,12 @@ const rehypeFootnotesCustomize: Plugin<
     for (const options of optionsArray) {
       const { path, footnoteLabel, footnoteBackContent } = options;
 
-      if (path instanceof RegExp) {
-        if (!path.test(relativePath)) {
+      if (typeof path === "string") {
+        if (!relativePath.includes(path)) {
           continue;
         }
       } else {
-        if (!relativePath.includes(path)) {
+        if (!path.test(relativePath)) {
           continue;
         }
       }
