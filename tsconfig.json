@@ -1,21 +1,8 @@
 {
+  "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
-    "strict": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
-  },
-  "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Strictest",
-  "_version": "2.0.0"
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  }
 }
