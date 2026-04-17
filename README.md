@@ -39,7 +39,7 @@ yarn add rehype-footnotes-customize
 Example:
 
 ```js
-import rehypeFootnotesCustomize from 'rehype-footnotes-customize';
+import rehypeFootnotesCustomize from "rehype-footnotes-customize";
 
 export default {
   rehypePlugins: [
@@ -47,14 +47,14 @@ export default {
       rehypeFootnotesCustomize,
       [
         {
-          path: 'src/blog/ja/',
-          footnoteLabel: '脚註',
-          footnoteBackContent: '戻る',
+          path: "src/blog/ja/",
+          footnoteLabel: "脚註",
+          footnoteBackContent: "戻る",
         },
         {
-          path: 'src/blog/de/',
-          footnoteLabel: 'Fußnoten',
-          footnoteBackContent: 'Zurück',
+          path: "src/blog/de/",
+          footnoteLabel: "Fußnoten",
+          footnoteBackContent: "Zurück",
         },
       ],
     ],
@@ -87,7 +87,7 @@ Examples:
 
 ```js
 path: /^blog\/\w+\//,
-path: 'content/german/',
+path: "content/german/",
 ```
 
 ### `footnoteLabel`

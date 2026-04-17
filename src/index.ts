@@ -1,8 +1,8 @@
-import type { Plugin } from "unified";
-import type { Root, Element, Text } from "hast";
-import type { VFile } from "vfile";
-import { visit } from "unist-util-visit";
 import { relative } from "node:path";
+import { visit } from "unist-util-visit";
+import type { Element, Root, Text } from "hast";
+import type { Plugin } from "unified";
+import type { VFile } from "vfile";
 
 export interface RehypeFootnotesCustomizeOptions {
   path: RegExp | string;
@@ -10,12 +10,32 @@ export interface RehypeFootnotesCustomizeOptions {
   footnoteBackContent?: string;
 }
 
+function matchesPath(rulePath: RegExp | string, relativePath: string): boolean {
+  return typeof rulePath === "string"
+    ? relativePath.startsWith(rulePath)
+    : rulePath.test(relativePath);
+}
+
+function isFootnoteLabel(node: Element): boolean {
+  return node.properties["id"] === "footnote-label";
+}
+
+function isFootnoteBackref(node: Element): boolean {
+  return (
+    node.tagName === "a" && node.properties["dataFootnoteBackref"] !== undefined
+  );
+}
+
+function createTextNode(value: string): Text {
+  return { type: "text", value };
+}
+
 const rehypeFootnotesCustomize: Plugin<
   [Array<RehypeFootnotesCustomizeOptions>?],
   Root
 > = (optionsArray: Array<RehypeFootnotesCustomizeOptions> = []) => {
   return (tree: Root, file: VFile) => {
-    const filePath = file.path ?? "";
+    const filePath = file.path;
     if (!filePath) {
       return;
     }
@@ -24,32 +44,16 @@ const rehypeFootnotesCustomize: Plugin<
     for (const options of optionsArray) {
       const { path, footnoteLabel, footnoteBackContent } = options;
 
-      if (typeof path === "string") {
-        if (!relativePath.startsWith(path)) {
-          continue;
-        }
-      } else {
-        if (!path.test(relativePath)) {
-          continue;
-        }
+      if (!matchesPath(path, relativePath)) {
+        continue;
       }
 
       visit(tree, "element", (node: Element) => {
-        if (footnoteLabel) {
-          const id = node.properties["id"];
-          if (id === "footnote-label") {
-            node.children = [{ type: "text", value: footnoteLabel } as Text];
-          }
+        if (footnoteLabel && isFootnoteLabel(node)) {
+          node.children = [createTextNode(footnoteLabel)];
         }
-        if (footnoteBackContent) {
-          if (
-            node.tagName === "a" &&
-            node.properties["dataFootnoteBackref"] !== undefined
-          ) {
-            node.children = [
-              { type: "text", value: footnoteBackContent } as Text,
-            ];
-          }
+        if (footnoteBackContent && isFootnoteBackref(node)) {
+          node.children = [createTextNode(footnoteBackContent)];
         }
       });
     }
