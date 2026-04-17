@@ -100,12 +100,12 @@ describe("rehypeFootnotesCustomize", () => {
       "src/blog/de/post.md",
       [
         {
-          path: /^src\/blog\/ja\//,
+          path: "src/blog/ja/",
           footnoteLabel: "脚註",
           footnoteBackContent: "戻る",
         },
         {
-          path: /^src\/blog\/de\//,
+          path: "src/blog/de/",
           footnoteLabel: "Fußnoten",
           footnoteBackContent: "Zurück",
         },
@@ -124,11 +124,11 @@ describe("rehypeFootnotesCustomize", () => {
       "src/blog/de/post.md",
       [
         {
-          path: /^src\/blog\/de\//,
+          path: "src/blog/de/",
           footnoteLabel: "Fußnoten",
         },
         {
-          path: "blog/de/",
+          path: "src/blog/",
           footnoteBackContent: "Zurück",
         },
       ],
@@ -143,15 +143,15 @@ describe("rehypeFootnotesCustomize", () => {
   it("overrides the earlier change when multiple rules match", async () => {
     const html = await render(
       "Hello[^1], World[^2]!\n\n[^1]: hello\n[^2]: world",
-      "src/blog/post.md",
+      "src/blog/de/post.md",
       [
         {
-          path: /^src\/blog\//,
+          path: /^src\/blog\/\w+\//,
           footnoteLabel: "脚註",
           footnoteBackContent: "戻る",
         },
         {
-          path: /^src\/blog\//,
+          path: /^src\/blog\/\w+\//,
           footnoteLabel: "Fußnoten",
           footnoteBackContent: "Zurück",
         },
@@ -178,7 +178,7 @@ describe("rehypeFootnotesCustomize", () => {
     const p = "src/blog/post.md";
     const html = await render(md, p, [
       {
-        path: "blog/post-de.md",
+        path: "blog/",
         footnoteLabel: "Fußnoten",
         footnoteBackContent: "Zurück",
       },
@@ -193,7 +193,7 @@ describe("rehypeFootnotesCustomize", () => {
     const p = "src/blog/post.md";
     const html = await render(md, p, [
       {
-        path: /^src\/blog\/de\//,
+        path: /^src\/blog\/\w+\//,
         footnoteLabel: "Fußnoten",
         footnoteBackContent: "Zurück",
       },

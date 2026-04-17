@@ -47,12 +47,12 @@ export default {
       rehypeFootnotesCustomize,
       [
         {
-          path: /^src\/blog\/ja\//,
+          path: 'src/blog/ja/',
           footnoteLabel: '脚註',
           footnoteBackContent: '戻る',
         },
         {
-          path: /^src\/blog\/de\//,
+          path: 'src/blog/de/',
           footnoteLabel: 'Fußnoten',
           footnoteBackContent: 'Zurück',
         },
@@ -80,13 +80,13 @@ Type: `RegExp | string`
 
 Matches the file path of the processed document.
 If the path matches, the rule will be applied.
-If `path` is a string, the rule is applied when the file path includes that
+If `path` is a string, the rule is applied when the file path starts with that
 string.
 
 Examples:
 
 ```js
-path: /^blog\/de\//,
+path: /^blog\/\w+\//,
 path: 'content/german/',
 ```
 

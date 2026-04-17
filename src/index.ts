@@ -25,7 +25,7 @@ const rehypeFootnotesCustomize: Plugin<
       const { path, footnoteLabel, footnoteBackContent } = options;
 
       if (typeof path === "string") {
-        if (!relativePath.includes(path)) {
+        if (!relativePath.startsWith(path)) {
           continue;
         }
       } else {
