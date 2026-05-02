@@ -1,5 +1,5 @@
 # rehype-footnotes-customize
-[![npm version](https://img.shields.io/npm/v/rehype-footnotes-customize.svg)](https://www.npmjs.com/package/rehype-footnotes-customize)
+![Test](./../../actions/workflows/test.yaml/badge.svg)
 
 A [rehype](https://github.com/rehypejs/rehype) plugin for use with
 [remark-rehype](https://github.com/remarkjs/remark-rehype) that customizes
