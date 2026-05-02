@@ -1,6 +1,6 @@
 {
   "name": "rehype-footnotes-customize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A rehype plugin that customizes footnote labels and backreference text on a per-file basis.",
   "keywords": [
     "rehype",
@@ -46,14 +46,14 @@
     "@eslint/js": "^10.0.1",
     "@tsconfig/strictest": "^2.0.8",
     "@types/hast": "^3.0.4",
-    "@types/node": "^25.5.0",
-    "eslint": "^10.0.3",
+    "@types/node": "^25.6.0",
+    "eslint": "^10.3.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "globals": "^17.4.0",
+    "globals": "^17.6.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-string": "^3.0.1",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "rehype-stringify": "^10.0.1",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
@@ -62,7 +62,7 @@
     "typescript": "^5.9.3",
     "unified": "^11.0.5",
     "vfile": "^6.0.3",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.5"
   },
   "peerDependencies": {
     "remark-rehype": "^10.0.1"
